@@ -1,0 +1,23 @@
+name: Keep MySQL Alive
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # once per day
+  workflow_dispatch:
+
+jobs:
+  ping-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install MySQL client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
+
+      - name: Connect to DB
+        run: |
+          mysql \
+          -h mysql-215c945b-ademsansa7-4324.j.aivencloud.com \
+          -P 28053 \
+          -u avnadmin \
+          -p${{ secrets.DB_PASSWORD }} \
+          -e "SELECT 1;" slouma
