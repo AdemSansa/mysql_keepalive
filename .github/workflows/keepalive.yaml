@@ -2,7 +2,7 @@ name: Keep MySQL Alive
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # once per day
+    - cron: '*/15 * * * *'   # once per day
   workflow_dispatch:
 
 jobs:
